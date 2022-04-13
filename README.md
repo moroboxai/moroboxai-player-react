@@ -54,6 +54,19 @@ You can run the playground locally on port 3000 with:
 
 If you want to change something in the library, go to `moroboxai-player-react/src/...`, the library will be automatically re-built and the playground will use the latest build
 
+## Props
+
+| Name   |      Type      |  Default |  Description |
+|:----------|:-------------|:------|:------|
+| url | string || URL of the game |
+| splashart | string || URL of the placeholder image displayed before the game is loaded |
+| width | string || Width of the `div` element |
+| height | string || Height of the `div` element |
+| className | string || Class name for the `div` container |
+| init | boolean | true | Auto initialize the player with `MoroboxAIPlayer.init(...)` when mounted |
+| autoPlay | boolean | false | Auto play the game after the player is initialized |
+| onReady | func | noop | **Signature: function() => void** <br/> Function called when the game is loaded and ready |
+
 ## License
 
 This content is released under the [MIT](http://opensource.org/licenses/MIT) License.
