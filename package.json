@@ -1,4 +1,5 @@
-{		"name": "moroboxai-player-react",
+{
+	"name": "moroboxai-player-react",
 	"version": "0.1.0-alpha.1",
 	"description": "MoroboxAI player for React",
 	"author": "moroboxai",
@@ -7,13 +8,13 @@
 	"unpkg": "lib/umd/moroboxai-player-react.min.js",
 	"jsdelivr": "lib/umd/moroboxai-player-react.min.js",
 	"types": "lib/types.d.ts",
-  "scripts": {
-    "lint": "npx eslint src",
-    "build": "rollup -c",
-    "build-dev": "rollup -c -w",
-    "prepublish": "npm test && npm run lint && npm run build",
-    "test": "npx jest"
-  },
+	"scripts": {
+		"lint": "npx eslint src",
+		"build": "rollup -c",
+		"build-dev": "rollup -c -w",
+		"prepublish": "npm test && npm run lint && npm run build",
+		"test": "npx jest"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/moroboxai/moroboxai-player-react.git"
@@ -62,7 +63,8 @@
 		"rollup": "^2.70.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"rollup-plugin-terser": "^7.0.2",
-		"ts-jest": "^27.1.4"
+		"ts-jest": "^27.1.4",
+		"typescript": "^4.6.3"
 	},
 	"babel": {
 		"presets": [
