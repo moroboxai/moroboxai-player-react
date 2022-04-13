@@ -56,4 +56,4 @@ If you want to change something in the library, go to `moroboxai-player-react/sr
 
 ## License
 
-This content is released under the (http://opensource.org/licenses/MIT) MIT License.
+This content is released under the [MIT](http://opensource.org/licenses/MIT) License.
