@@ -3,10 +3,13 @@ import * as MoroboxAIPlayer from "moroboxai-player-web";
 
 type PlayerContainerProps = {
     className?: string,
-    url?: string,
-    splashart?: string,
-    width?: string,
-    height?: string,
+    url?: string, // URL for the game
+    splashart?: string, // URL for the splashart
+    width?: string, // div width (css)
+    height?: string, // div height (css)
+    init?: boolean, // initialize the player or not
+    autoPlay?: boolean, // auto play the game
+    onReady?: () => void, // called when the game is ready
     _ref: React.RefObject<HTMLDivElement>
 };
 
@@ -14,7 +17,7 @@ type PlayerContainerState = {};
 
 class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContainerState> {
     static propTypes: any;
-    private _player: MoroboxAIPlayer.IMoroboxAIPlayer;
+    private _player?: MoroboxAIPlayer.IMoroboxAIPlayer;
 
     constructor(props) {
         super(props);
@@ -22,11 +25,20 @@ class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContai
     }
 
     componentDidMount(): void {
-        this._player = MoroboxAIPlayer.init(this.props._ref.current);
+        if (this.props.init === undefined || this.props.init) {
+            this._player = MoroboxAIPlayer.init(this.props._ref.current);
+            this._player.onReady = this.props.onReady;
+            if (this.props.autoPlay) {
+                this._player.play();
+            }
+        }
     }
 
     componentWillUnmount(): void {
-        this._player.remove();
+        if (this._player !== undefined) {
+            this._player.remove();
+            this._player = undefined;
+        }
     }
 
     render() {

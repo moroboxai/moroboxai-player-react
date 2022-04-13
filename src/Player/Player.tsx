@@ -6,6 +6,9 @@ type PlayerProps = {
     url?: string,
     splashart?: string,
     width?: string,
+    init?: boolean,
+    autoPlay?: boolean,
+    onReady?: () => void,
     height?: string
 };
 
