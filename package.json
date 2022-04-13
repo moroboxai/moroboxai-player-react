@@ -1,0 +1,107 @@
+{		"name": "moroboxai-player-react",
+	"version": "0.1.0-alpha.1",
+	"description": "MoroboxAI player for React",
+	"author": "moroboxai",
+	"main": "lib/cjs/index.js",
+	"module": "lib/es/index.js",
+	"unpkg": "lib/umd/moroboxai-player-react.min.js",
+	"jsdelivr": "lib/umd/moroboxai-player-react.min.js",
+	"types": "lib/types.d.ts",
+  "scripts": {
+    "lint": "npx eslint src",
+    "build": "rollup -c",
+    "build-dev": "rollup -c -w",
+    "prepublish": "npm test && npm run lint && npm run build",
+    "test": "npx jest"
+  },
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/moroboxai/moroboxai-player-react.git"
+	},
+	"keywords": [
+		"moroboxai",
+		"player",
+		"react"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/moroboxai/moroboxai-player-react/issues"
+	},
+	"homepage": "https://github.com/moroboxai/moroboxai-player-react#readme",
+	"peerDependencies": {
+		"moroboxai-player-web": "^0.1.0-alpha.1",
+		"react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+		"react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.17.6",
+		"@babel/core": "^7.17.9",
+		"@babel/plugin-transform-runtime": "^7.17.0",
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-react": "^7.16.7",
+		"@rollup/plugin-babel": "^5.3.1",
+		"@rollup/plugin-commonjs": "^17.1.0",
+		"@rollup/plugin-node-resolve": "^11.2.1",
+		"@rollup/plugin-replace": "^2.4.2",
+		"@rollup/plugin-typescript": "^8.3.1",
+		"@testing-library/jest-dom": "^5.16.4",
+		"@testing-library/react": "^9.5.0",
+		"babel-eslint": "10.0.3",
+		"babel-jest": "^25.5.1",
+		"eslint": "6.6.0",
+		"eslint-config-react-app": "^5.2.1",
+		"eslint-plugin-flowtype": "4.6.0",
+		"eslint-plugin-import": "2.20.1",
+		"eslint-plugin-jsx-a11y": "6.2.3",
+		"eslint-plugin-react": "7.18.3",
+		"eslint-plugin-react-hooks": "2.4.0",
+		"husky": "^4.3.8",
+		"jest": "^27.5.1",
+		"react": "^16.14.0",
+		"react-dom": "^16.14.0",
+		"rollup": "^2.70.1",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-terser": "^7.0.2",
+		"ts-jest": "^27.1.4"
+	},
+	"babel": {
+		"presets": [
+			"@babel/preset-env",
+			"@babel/preset-react"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "rm -rf ./lib && npm test && npm run lint"
+		}
+	},
+	"jest": {
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/demo/",
+			"/playground/"
+		],
+		"testEnvironment": "jsdom",
+		"roots": [
+			"<rootDir>/src"
+		],
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest"
+		},
+		"setupFilesAfterEnv": [
+			"@testing-library/jest-dom/extend-expect"
+		],
+		"testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"jsx",
+			"json",
+			"node"
+		]
+	},
+	"dependencies": {
+		"prop-types": "^15.8.1"
+	}
+}
