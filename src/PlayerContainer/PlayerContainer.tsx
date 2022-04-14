@@ -7,7 +7,6 @@ type PlayerContainerProps = {
     splashart?: string, // URL for the splashart
     width?: string, // div width (css)
     height?: string, // div height (css)
-    init?: boolean, // initialize the player or not
     autoPlay?: boolean, // auto play the game
     onReady?: () => void, // called when the game is ready
     _ref: React.RefObject<HTMLDivElement>
@@ -19,18 +18,24 @@ class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContai
     static propTypes: any;
     private _player?: MoroboxAIPlayer.IMoroboxAIPlayer;
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
         //this.state = {};
     }
 
     componentDidMount(): void {
-        if (this.props.init === undefined || this.props.init) {
-            this._player = MoroboxAIPlayer.init(this.props._ref.current);
-            this._player.onReady = this.props.onReady;
-            if (this.props.autoPlay) {
-                this._player.play();
-            }
+        this._player = MoroboxAIPlayer.init({
+            element: this.props._ref.current!,
+            url: this.props.url,
+            splashart: this.props.splashart,
+            width: this.props.width,
+            height: this.props.height,
+            autoPlay: this.props.autoPlay,
+            onReady: this.props.onReady
+        }) as MoroboxAIPlayer.IMoroboxAIPlayer;
+        
+        if (this.props.autoPlay) {
+            this._player.play();
         }
     }
 

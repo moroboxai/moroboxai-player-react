@@ -63,7 +63,6 @@ If you want to change something in the library, go to `moroboxai-player-react/sr
 | width | string || Width of the `div` element |
 | height | string || Height of the `div` element |
 | className | string || Class name for the `div` container |
-| init | boolean | true | Auto initialize the player with `MoroboxAIPlayer.init(...)` when mounted |
 | autoPlay | boolean | false | Auto play the game after the player is initialized |
 | onReady | func | noop | **Signature: function() => void** <br/> Function called when the game is loaded and ready |
 

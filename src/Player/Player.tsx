@@ -6,7 +6,6 @@ type PlayerProps = {
     url?: string,
     splashart?: string,
     width?: string,
-    init?: boolean,
     autoPlay?: boolean,
     onReady?: () => void,
     height?: string
@@ -18,7 +17,7 @@ class Player extends React.Component<PlayerProps, PlayerState> {
     static propTypes: any;
     private _refContainer: React.RefObject<HTMLDivElement>;
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
         //this.state = {};
 
