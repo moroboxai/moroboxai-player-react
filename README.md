@@ -16,25 +16,47 @@ npm install moroboxai-player-react
 
 ## Usage
 
-```javascript
-import React from "react";
-import ReactDOM from "react-dom";
+Setup a simple React app with:
 
-import Player from "moroboxai-player-react";
+```bash
+npx create-react-app my-app --template typescript
+```
+
+Add `moroboxai-player-react` as a dependency:
+
+```bash
+cd my-app
+npm install moroboxai-player-react --save
+```
+
+Replace `src/App.tsx` with:
+
+```javascript
+import './App.css';
+import Player from 'moroboxai-player-react';
 
 function App() {
   return (
-   <Player
-     url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pixijs-template/"
-     splashart="https://github.com/moroboxai/moroboxai-games/blob/master/games/pixijs-template/assets/splashart.png?raw=true"
-     width="256px"
-     height="256px"
-   />
+    <div className="App">
+      <header className="App-header">
+        <Player
+          url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pixijs-template/"
+          splashart="https://github.com/moroboxai/moroboxai-games/blob/master/games/pixijs-template/assets/splashart.png?raw=true"
+          width="256px"
+          height="256px"/>
+      </header>
+    </div>
   );
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+export default App;
+```
+
+Build and start a local server to see the result:
+
+```bash
+npm run build
+npm run start
 ```
 
 ## Playground
