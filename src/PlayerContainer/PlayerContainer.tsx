@@ -16,7 +16,7 @@ type PlayerContainerState = {};
 
 class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContainerState> {
     static propTypes: any;
-    private _player?: MoroboxAIPlayer.IMoroboxAIPlayer;
+    private _player?: MoroboxAIPlayer.IPlayer;
 
     constructor(props: any) {
         super(props);
@@ -32,7 +32,7 @@ class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContai
             height: this.props.height,
             autoPlay: this.props.autoPlay,
             onReady: this.props.onReady
-        }) as MoroboxAIPlayer.IMoroboxAIPlayer;
+        }) as MoroboxAIPlayer.IPlayer;
         
         if (this.props.autoPlay) {
             this._player.play();
