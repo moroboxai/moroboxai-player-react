@@ -9,6 +9,7 @@ type PlayerContainerProps = {
     height?: string, // div height (css)
     autoPlay?: boolean, // auto play the game
     onReady?: () => void, // called when the game is ready
+    onMount?: (player: MoroboxAIPlayer.IPlayer) => void, // called when the component did mount
     _ref: React.RefObject<HTMLDivElement>
 };
 
@@ -37,6 +38,10 @@ class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContai
         if (this.props.autoPlay) {
             this._player.play();
         }
+
+        if (this.props.onMount !== undefined) {
+            this.props.onMount(this._player);
+        }
     }
 
     componentWillUnmount(): void {
@@ -46,15 +51,17 @@ class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContai
         }
     }
 
+    getModel(): MoroboxAIPlayer.IPlayer | undefined {
+        return this._player;
+    }
+
     render() {
         const _props: {
             "data-url"?: string,
             style: React.CSSProperties
         } = {
             style: {
-                backgroundSize: "cover",
-                width: this.props.width,
-                height: this.props.height
+                backgroundSize: "cover"
             }
         }
 

@@ -1,14 +1,16 @@
 import React from "react";
 import PlayerContainer from '../PlayerContainer';
+import {IPlayer} from "moroboxai-player-web";
 
 type PlayerProps = {
     className?: string,
     url?: string,
     splashart?: string,
     width?: string,
+    height?: string
     autoPlay?: boolean,
     onReady?: () => void,
-    height?: string
+    onMount?: (player: IPlayer) => void
 };
 
 type PlayerState = {};
