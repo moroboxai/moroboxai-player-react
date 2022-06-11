@@ -14,6 +14,15 @@ Using npm:
 npm install moroboxai-player-react --save
 ```
 
+Or:
+
+```bash
+git clone https://github.com/moroboxai/moroboxai-player-react.git
+cd moroboxai-player-react
+npm i
+npm run build
+```
+
 ## Usage
 
 Setup a simple React app with:
