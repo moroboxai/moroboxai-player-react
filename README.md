@@ -49,8 +49,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Player
-          url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/",
-          splashart="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/assets/splashart.png",
+          url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/"
+          splashart="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/assets/splashart.png"
           width="256px"
           height="256px"/>
       </header>
