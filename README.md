@@ -95,7 +95,9 @@ If you want to change something in the library, go to `moroboxai-player-react/sr
 | height | string || Height of the `div` element |
 | className | string || Class name for the `div` container |
 | autoPlay | boolean | false | Auto play the game after the player is initialized |
+| speed | number | 1 | Speed of the game |
 | onReady | func | noop | **Signature: function() => void** <br/> Function called when the game is loaded and ready |
+| onMount | func | noop | **Signature: function(player: IPlayer) => void** <br/> Function called when the component is mounted |
 
 ## License
 
