@@ -4,7 +4,7 @@
 ![Node.js CI](https://github.com/moroboxai/moroboxai-player-react/workflows/Node.js%20CI/badge.svg)
 [![gitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/moroboxai/moroboxai-player-react/blob/master/LICENSE)
 
-Embeddable player for running MoroboxAI games in [React](https://reactjs.org/).
+Embeddable player for running [MoroboxAI](https://github.com/moroboxai) games in [React](https://reactjs.org/).
 
 ## Installation
 
