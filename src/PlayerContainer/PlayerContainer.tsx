@@ -5,8 +5,9 @@ type PlayerContainerProps = {
     className?: string,
     url?: string, // URL for the game
     splashart?: string, // URL for the splashart
-    width?: string, // div width (css)
-    height?: string, // div height (css)
+    width?: number, // div width (css)
+    height?: number, // div height (css)
+    resizable?: boolean, // if the game can resize the player
     autoPlay?: boolean, // auto play the game
     onReady?: () => void, // called when the game is ready
     onMount?: (player: MoroboxAIPlayer.IPlayer) => void, // called when the component did mount
@@ -31,6 +32,7 @@ class PlayerContainer extends React.Component<PlayerContainerProps, PlayerContai
             splashart: this.props.splashart,
             width: this.props.width,
             height: this.props.height,
+            resizable: this.props.resizable,
             autoPlay: this.props.autoPlay,
             onReady: this.props.onReady
         }) as MoroboxAIPlayer.IPlayer;

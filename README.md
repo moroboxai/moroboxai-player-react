@@ -51,8 +51,8 @@ function App() {
         <Player
           url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/"
           splashart="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/assets/splashart.png"
-          width="256px"
-          height="256px"/>
+          width={256}
+          height={256}/>
       </header>
     </div>
   );
@@ -91,8 +91,9 @@ If you want to change something in the library, go to `moroboxai-player-react/sr
 |:----------|:-------------|:------|:------|
 | url | string || URL of the game |
 | splashart | string || URL of the placeholder image displayed before the game is loaded |
-| width | string || Width of the `div` element |
-| height | string || Height of the `div` element |
+| width | number || Width of the `div` element |
+| height | number || Height of the `div` element |
+| resizable | boolean | true | If the game can resize the player |
 | className | string || Class name for the `div` container |
 | autoPlay | boolean | false | Auto play the game after the player is initialized |
 | speed | number | 1 | Speed of the game |

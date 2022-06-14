@@ -9,10 +9,10 @@ function App() {
 
     return (
         <Player
-            url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pixijs-template/"
-            splashart="https://github.com/moroboxai/moroboxai-games/blob/master/games/pixijs-template/assets/splashart.png?raw=true"
-            width="256px"
-            height="256px"
+            url="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong"
+            splashart="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/games/pong/assets/splashart.png"
+            width={256}
+            height={256}
             onReady={onReady}/>
     );
 }

@@ -6,8 +6,9 @@ type PlayerProps = {
     className?: string,
     url?: string,
     splashart?: string,
-    width?: string,
-    height?: string
+    width?: number,
+    height?: number,
+    resizable?: boolean,
     autoPlay?: boolean,
     onReady?: () => void,
     onMount?: (player: IPlayer) => void
