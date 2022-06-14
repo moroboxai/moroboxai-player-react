@@ -1,6 +1,6 @@
 {
 	"name": "moroboxai-player-react",
-	"version": "0.1.0-alpha.4",
+	"version": "0.1.0-alpha.5",
 	"description": "MoroboxAI player for React",
 	"author": "moroboxai",
 	"main": "./lib/cjs/index.js",
@@ -27,7 +27,7 @@
 	},
 	"homepage": "https://github.com/moroboxai/moroboxai-player-react#readme",
 	"peerDependencies": {
-		"moroboxai-player-web": "^0.1.0-alpha.8",
+		"moroboxai-player-web": "^0.1.0-alpha.9",
 		"react": "^16.8.0 || ^17.0.0 || ^18.0.0",
 		"react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
 	},
