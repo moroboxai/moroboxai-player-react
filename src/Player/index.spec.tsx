@@ -9,8 +9,8 @@ describe('<Player />', () => {
             <Player
                 url="some-url"
                 splashart="some-splashart"
-                width="256px"
-                height="256px"
+                width={256}
+                height={256}
             />,
         );
 

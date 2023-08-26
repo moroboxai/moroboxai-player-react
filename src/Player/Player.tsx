@@ -1,10 +1,12 @@
 import React from "react";
 import PlayerContainer from '../PlayerContainer';
-import {IPlayer} from "moroboxai-player-web";
+import { IPlayer } from "moroboxai-player-web";
+import { GameHeader } from "moroboxai-game-sdk";
 
 type PlayerProps = {
     className?: string,
     url?: string,
+    header?: GameHeader,
     splashart?: string,
     width?: number,
     height?: number,
@@ -30,7 +32,7 @@ class Player extends React.Component<PlayerProps, PlayerState> {
     render() {
         return <PlayerContainer
             _ref={this._refContainer}
-            {...this.props}/>
+            {...this.props} />
     }
 }
 

@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -12,4 +13,16 @@ html, body {
 
 .mai-player {
     background-color: black;
+}
+
+.line {
+    margin-top: 0.5em;
+}
+
+label {
+    margin-right: 0.5em;
+}
+
+input[type="button"] {
+    margin-right: 0.5em;
 }
