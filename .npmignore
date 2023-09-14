@@ -1,3 +1,5 @@
+index.html
+
 .DS_Store
 npm-debug.log
 yarn-error.log
@@ -7,10 +9,10 @@ yarn-error.log
 .travis.yml
 .vscode/
 
+/sample/
 /src/
 /coverage/
 /node_modules/
-/playground/
 
 __snapshots__
 *.spec.js

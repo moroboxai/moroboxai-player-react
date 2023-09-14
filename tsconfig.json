@@ -8,6 +8,7 @@
     "jsx": "react", 
     "module": "ESNext",  
     "sourceMap": true,
+    "outDir": "lib/es",
     "moduleResolution": "node",
     "declaration": false,
     "allowSyntheticDefaultImports": true,
@@ -16,6 +17,5 @@
       "*": ["node_modules/*", "src/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": []
+  "include": ["src/**/*"]
 }

@@ -1,5 +1,5 @@
-import { memo } from 'react';
+import { memo } from "react";
 
-import PlayerContainer from './PlayerContainer';
+import PlayerContainer from "./PlayerContainer";
 
 export default memo(PlayerContainer);
