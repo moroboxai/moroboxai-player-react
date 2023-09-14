@@ -5,4 +5,4 @@ export {
     PLAYER_SDK_VERSION,
     VERSION as PLAYER_WEB_VERSION
 } from "moroboxai-player-web";
-export const VERSION = "0.1.0-alpha.12";
+export const VERSION = "0.1.0-alpha.13";
