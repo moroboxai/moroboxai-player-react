@@ -10,7 +10,7 @@
     "sourceMap": true,
     "outDir": "lib/es",
     "moduleResolution": "node",
-    "declaration": false,
+    "declaration": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
