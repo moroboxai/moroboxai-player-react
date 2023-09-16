@@ -19,9 +19,7 @@ type AppState = {
 };
 
 class App extends React.Component<AppProps, AppState> {
-    static propTypes: any;
-
-    constructor(props: any) {
+    constructor(props: AppProps) {
         super(props);
 
         this.state = {
@@ -132,7 +130,5 @@ class App extends React.Component<AppProps, AppState> {
         );
     }
 }
-
-App.propTypes = {};
 
 export default App;
