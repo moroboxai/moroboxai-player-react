@@ -23,7 +23,6 @@ class PlayerContainer extends React.Component<
     PlayerContainerProps,
     PlayerContainerState
 > {
-    static propTypes: any;
     private _player?: MoroboxAIPlayer.IPlayer;
 
     componentDidMount(): void {
@@ -145,7 +144,5 @@ class PlayerContainer extends React.Component<
         );
     }
 }
-
-PlayerContainer.propTypes = {};
 
 export default PlayerContainer;

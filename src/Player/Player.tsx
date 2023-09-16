@@ -12,6 +12,7 @@ type PlayerProps = {
     height?: number;
     resizable?: boolean;
     autoPlay?: boolean;
+    speed?: number;
     onReady?: () => void;
     onMount?: (player: IPlayer) => void;
 };
@@ -19,10 +20,9 @@ type PlayerProps = {
 type PlayerState = {};
 
 class Player extends React.Component<PlayerProps, PlayerState> {
-    static propTypes: any;
     private _refContainer: React.RefObject<HTMLDivElement>;
 
-    constructor(props: any) {
+    constructor(props: PlayerProps | Readonly<PlayerProps>) {
         super(props);
         //this.state = {};
 
@@ -33,7 +33,5 @@ class Player extends React.Component<PlayerProps, PlayerState> {
         return <PlayerContainer _ref={this._refContainer} {...this.props} />;
     }
 }
-
-Player.propTypes = {};
 
 export default Player;
