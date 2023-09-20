@@ -2,7 +2,7 @@ import React from "react";
 import { GAME_SDK_VERSION, IPlayer } from "moroboxai-player-web";
 import { Language } from "moroboxai-editor-sdk";
 import Editor, { VERSION as EDITOR_REACT_VERSION } from "moroboxai-editor-react";
-import Player, { PLAYER_WEB_VERSION } from "../src";
+import Player from "../src";
 
 import "./App.css";
 
@@ -106,7 +106,6 @@ class App extends React.Component<AppProps, AppState> {
                 </div>
                 <div className={"info"}>
                     <div>moroboxai-game-sdk v{GAME_SDK_VERSION}</div>
-                    <div>moroboxai-player-web v{PLAYER_WEB_VERSION}</div>
                     <div>moroboxai-editor-react v{EDITOR_REACT_VERSION}</div>
                 </div>
             </>
