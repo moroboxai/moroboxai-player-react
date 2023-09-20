@@ -10,6 +10,7 @@ type PlayerProps = {
     splashart?: string;
     width?: number;
     height?: number;
+    scale?: number;
     resizable?: boolean;
     autoPlay?: boolean;
     speed?: number;

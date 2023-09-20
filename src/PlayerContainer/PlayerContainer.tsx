@@ -9,6 +9,7 @@ type PlayerContainerProps = {
     splashart?: string; // URL for the splashart
     width?: number; // div width (css)
     height?: number; // div height (css)
+    scale?: number; // Scale of the player
     resizable?: boolean; // if the game can resize the player
     autoPlay?: boolean; // auto play the game
     speed?: number; // desired game speed
@@ -33,6 +34,7 @@ class PlayerContainer extends React.Component<
             splashart: this.props.splashart,
             width: this.props.width,
             height: this.props.height,
+            scale: this.props.scale,
             resizable: this.props.resizable,
             autoPlay: this.props.autoPlay,
             speed: this.props.speed,
@@ -71,6 +73,13 @@ class PlayerContainer extends React.Component<
                 width: this._player.width,
                 height: this.props.height
             });
+        }
+
+        if (
+            this.props.scale !== undefined &&
+            this.props.scale != prevProps.scale
+        ) {
+            this._player.scale = this.props.scale;
         }
 
         if (

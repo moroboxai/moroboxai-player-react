@@ -1,16 +1,17 @@
 {
     "name": "moroboxai-player-react",
-    "version": "0.1.0-alpha.16",
+    "version": "0.1.0-alpha.17",
     "description": "MoroboxAI player for React",
     "author": "moroboxai",
     "main": "./lib/cjs/index.cjs",
     "module": "./lib/es/index.js",
     "unpkg": "./lib/umd/moroboxai-player-react.min.js",
     "jsdelivr": "./lib/umd/moroboxai-player-react.min.js",
-    "types": "./lib/es/index.d.ts",
+    "types": "./lib/index.d.ts",
     "scripts": {
         "dev": "vite",
-        "build": "vite build --config vite.config.lib.js && tsc && vite build",
+        "build": "vite build --config vite.config.lib.js && tsc --emitDeclarationOnly",
+        "build:vite": "vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "prepublish": "npm run build"
@@ -35,24 +36,26 @@
         "react-dom": "^18.2.0"
     },
     "dependencies": {
+        "moroboxai-editor-react": "^0.1.1-alpha.5",
+        "moroboxai-game-sdk": "^0.1.0-alpha.36",
         "moroboxai-player-web": "^0.1.0-alpha.29",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@testing-library/react": "^14.0.0",
-        "@types/jest": "^29.5.4",
-        "@types/node": "^20.6.0",
-        "@types/react": "^18.2.15",
+        "@types/jest": "^29.5.5",
+        "@types/node": "^20.6.2",
+        "@types/react": "^18.2.22",
         "@types/react-dom": "^18.2.7",
-        "@typescript-eslint/eslint-plugin": "^6.0.0",
-        "@typescript-eslint/parser": "^6.0.0",
-        "@vitejs/plugin-react": "^4.0.3",
-        "eslint": "^8.45.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.2",
+        "@typescript-eslint/parser": "^6.7.2",
+        "@vitejs/plugin-react": "^4.0.4",
+        "eslint": "^8.49.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.3",
         "jest": "^29.7.0",
-        "typescript": "^5.0.2",
-        "vite": "^4.4.5"
+        "typescript": "^5.2.2",
+        "vite": "^4.4.9"
     }
 }

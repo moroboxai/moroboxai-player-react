@@ -1,21 +1,17 @@
 import React from "react";
-import Player from "../src";
+import { GAME_SDK_VERSION, IPlayer } from "moroboxai-player-web";
+import { Language } from "moroboxai-editor-sdk";
+import Editor, { VERSION as EDITOR_REACT_VERSION } from "moroboxai-editor-react";
+import Player, { PLAYER_WEB_VERSION } from "../src";
 
 import "./App.css";
-
-const DEFAULT_URL =
-    "https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/piximoroxel8ai-sample/sample/header.yml";
-const DEFAULT_SIZE = 2;
-const DEFAULT_SPEED = 1;
-const DEFAULT_AUTO_PLAY = false;
 
 type AppProps = {};
 
 type AppState = {
-    url: string;
-    size: number;
-    speed: number;
-    autoPlay: boolean;
+    player?: IPlayer;
+    attachedPlayer: boolean;
+    attachedEditor: boolean;
 };
 
 class App extends React.Component<AppProps, AppState> {
@@ -23,33 +19,43 @@ class App extends React.Component<AppProps, AppState> {
         super(props);
 
         this.state = {
-            url: DEFAULT_URL,
-            size: DEFAULT_SIZE,
-            speed: DEFAULT_SPEED,
-            autoPlay: DEFAULT_AUTO_PLAY
+            attachedPlayer: true,
+            attachedEditor: true,
         };
 
-        this.handleUrlChanged = this.handleUrlChanged.bind(this);
-        this.setSize = this.setSize.bind(this);
-        this.setSpeed = this.setSpeed.bind(this);
-        this.handleAutoPlayChanged = this.handleAutoPlayChanged.bind(this);
+        this.handleMount = this.handleMount.bind(this);
+        this.handleLoad = this.handleLoad.bind(this);
+        this.handleUnload = this.handleUnload.bind(this);
+        this.handleAttachPlayer = this.handleAttachPlayer.bind(this);
+        this.handleAttachEditor = this.handleAttachEditor.bind(this);
         this.handleReady = this.handleReady.bind(this);
     }
 
-    handleUrlChanged(evt: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ url: evt.target.value });
+    handleMount(player: IPlayer) {
+        this.setState({player});
     }
 
-    setSize(size: number) {
-        this.setState({ size });
+    handleLoad(language: Language, code: string) {
+        if (this.state.player !== undefined) {
+            this.state.player.getController(0)?.loadAgent({
+                language,
+                code
+            });
+        }
     }
 
-    setSpeed(speed: number) {
-        this.setState({ speed });
+    handleUnload() {
+        if (this.state.player !== undefined) {
+            this.state.player.getController(0)?.unloadAgent();
+        }
     }
 
-    handleAutoPlayChanged(evt: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ autoPlay: evt.target.checked });
+    handleAttachPlayer() {
+        this.setState({ attachedPlayer: !this.state.attachedPlayer });
+    }
+
+    handleAttachEditor() {
+        this.setState({ attachedEditor: !this.state.attachedEditor });
     }
 
     handleReady() {
@@ -57,74 +63,51 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     render() {
-        const { url, size, speed, autoPlay } = this.state;
+        const { attachedPlayer, attachedEditor } = this.state;
+
+        const player = attachedPlayer ? (
+            <Player
+                url="https://raw.githubusercontent.com/moroboxai/create-moroboxai-game/master/examples/canvas2d-rgb/header-js.yml"
+                scale={1}
+                resizable={true}
+                autoPlay={true}
+                onMount={this.handleMount}
+                onReady={this.handleReady}
+            />
+        ) : (
+            <></>
+        );
+
+        const editor = attachedEditor ? (
+            <Editor
+                url="https://raw.githubusercontent.com/moroboxai/create-moroboxai-game/master/examples/canvas2d-rgb/agent.js"
+                width="500px"
+                height="400px"
+                onLoad={this.handleLoad}
+                onUnload={this.handleUnload}
+            />
+        ) : (
+            <></>
+        );
 
         return (
             <>
-                <Player
-                    url={url}
-                    splashart="https://raw.githubusercontent.com/moroboxai/moroboxai-games/master/piximoroxel8ai-sample/sample/splashart.png"
-                    width={256 * size}
-                    height={256 * size}
-                    speed={speed}
-                    autoPlay={autoPlay}
-                    onReady={this.handleReady}
-                />
-                <div className="line">
-                    <label htmlFor="url">URL:</label>
-                    <input
-                        name="url"
-                        type="text"
-                        value={url}
-                        onChange={this.handleUrlChanged}
-                    />
+                <div className="horizontal">
+                    <div id="player">{player}</div>
+                    <div id="editor">{editor}</div>
                 </div>
-                <div className="line">
-                    <label htmlFor="size">Size:</label>
-                    <input
-                        type="button"
-                        name="size"
-                        value="x1"
-                        onClick={() => this.setSize(1)}
-                    />
-                    <input
-                        type="button"
-                        value="x2"
-                        onClick={() => this.setSize(2)}
-                    />
-                    <input
-                        type="button"
-                        value="x3"
-                        onClick={() => this.setSize(3)}
-                    />
+                <div className="info horizontal">
+                    <button onClick={this.handleAttachPlayer}>
+                        {attachedPlayer ? "Detach Player" : "Attach Player"}
+                    </button>
+                    <button onClick={this.handleAttachEditor}>
+                        {attachedEditor ? "Detach Editor" : "Attach Editor"}
+                    </button>
                 </div>
-                <div className="line">
-                    <label htmlFor="speed">Speed:</label>
-                    <input
-                        type="button"
-                        name="speed"
-                        value="x1"
-                        onClick={() => this.setSpeed(1)}
-                    />
-                    <input
-                        type="button"
-                        value="x2"
-                        onClick={() => this.setSpeed(2)}
-                    />
-                    <input
-                        type="button"
-                        value="x3"
-                        onClick={() => this.setSpeed(3)}
-                    />
-                </div>
-                <div className="line">
-                    <label htmlFor="autoplay">Auto Play:</label>
-                    <input
-                        type="checkbox"
-                        name="autoplay"
-                        value="false"
-                        onChange={this.handleAutoPlayChanged}
-                    />
+                <div className={"info"}>
+                    <div>moroboxai-game-sdk v{GAME_SDK_VERSION}</div>
+                    <div>moroboxai-player-web v{PLAYER_WEB_VERSION}</div>
+                    <div>moroboxai-editor-react v{EDITOR_REACT_VERSION}</div>
                 </div>
             </>
         );
