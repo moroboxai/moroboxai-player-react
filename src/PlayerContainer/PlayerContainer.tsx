@@ -1,20 +1,11 @@
 import React from "react";
+import * as MoroboxAIPlayerSDK from "moroboxai-player-sdk";
 import * as MoroboxAIPlayer from "moroboxai-player-web";
-import { GameHeader } from "moroboxai-game-sdk";
 
-type PlayerContainerProps = {
+type PlayerContainerProps = MoroboxAIPlayerSDK.PlayerOptions & {
     className?: string;
-    url?: string; // URL for the game
-    header?: GameHeader; // header of the game
-    splashart?: string; // URL for the splashart
-    width?: number; // div width (css)
-    height?: number; // div height (css)
-    scale?: number; // Scale of the player
-    resizable?: boolean; // if the game can resize the player
-    autoPlay?: boolean; // auto play the game
-    speed?: number; // desired game speed
-    onReady?: () => void; // called when the game is ready
-    onMount?: (player: MoroboxAIPlayer.IPlayer) => void; // called when the component did mount
+    onMount?: (player: MoroboxAIPlayerSDK.IPlayer) => void; // called when the component did mount
+    onUnmount?: (player: MoroboxAIPlayerSDK.IPlayer) => void; // called when the component did unmount
     _ref: React.RefObject<HTMLDivElement>;
 };
 
@@ -24,13 +15,16 @@ class PlayerContainer extends React.Component<
     PlayerContainerProps,
     PlayerContainerState
 > {
-    private _player?: MoroboxAIPlayer.IPlayer;
+    private _player?: MoroboxAIPlayerSDK.IPlayer;
 
     componentDidMount(): void {
+        if (this._player !== undefined) return;
+        console.log("mount player from", this);
+
         this._player = MoroboxAIPlayer.init({
             element: this.props._ref.current!,
             url: this.props.url,
-            header: this.props.header,
+            boot: this.props.boot,
             splashart: this.props.splashart,
             width: this.props.width,
             height: this.props.height,
@@ -39,11 +33,7 @@ class PlayerContainer extends React.Component<
             autoPlay: this.props.autoPlay,
             speed: this.props.speed,
             onReady: this.props.onReady
-        }) as MoroboxAIPlayer.IPlayer;
-
-        if (this.props.autoPlay) {
-            this._player.play();
-        }
+        }) as MoroboxAIPlayerSDK.IPlayer;
 
         if (this.props.onMount !== undefined) {
             this.props.onMount(this._player);
@@ -97,32 +87,40 @@ class PlayerContainer extends React.Component<
         }
 
         if (
+            this.props.boot !== undefined &&
+            this.props.boot != prevProps.boot
+        ) {
+            this._player.boot = this.props.boot;
+        }
+
+        if (
             this.props.autoPlay !== undefined &&
             this.props.autoPlay != prevProps.autoPlay
         ) {
             this._player.autoPlay = this.props.autoPlay;
         }
 
-        if (
-            (this.props.url !== undefined && this.props.url != prevProps.url) ||
-            (this.props.header !== undefined &&
-                this.props.header != prevProps.header)
-        ) {
+        if (this.props.url !== undefined && this.props.url != prevProps.url) {
             this._player.play({
-                url: this.props.url,
-                header: this.props.header
+                url: this.props.url
             });
         }
     }
 
     componentWillUnmount(): void {
         if (this._player !== undefined) {
+            console.log("unmount player from", this);
+            const player = this._player;
             this._player.remove();
             this._player = undefined;
+
+            if (this.props.onUnmount !== undefined) {
+                this.props.onUnmount(player);
+            }
         }
     }
 
-    getModel(): MoroboxAIPlayer.IPlayer | undefined {
+    getModel(): MoroboxAIPlayerSDK.IPlayer | undefined {
         return this._player;
     }
 

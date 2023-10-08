@@ -1,21 +1,10 @@
 import React from "react";
 import PlayerContainer from "../PlayerContainer";
-import { IPlayer } from "moroboxai-player-web";
-import { GameHeader } from "moroboxai-game-sdk";
+import * as MoroboxAIPlayerSDK from "moroboxai-player-sdk";
 
-type PlayerProps = {
+type PlayerProps = MoroboxAIPlayerSDK.PlayerOptions & {
     className?: string;
-    url?: string;
-    header?: GameHeader;
-    splashart?: string;
-    width?: number;
-    height?: number;
-    scale?: number;
-    resizable?: boolean;
-    autoPlay?: boolean;
-    speed?: number;
-    onReady?: () => void;
-    onMount?: (player: IPlayer) => void;
+    onMount?: (player: MoroboxAIPlayerSDK.IPlayer) => void;
 };
 
 type PlayerState = {};
