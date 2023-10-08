@@ -5,6 +5,7 @@ import * as MoroboxAIPlayerSDK from "moroboxai-player-sdk";
 type PlayerProps = MoroboxAIPlayerSDK.PlayerOptions & {
     className?: string;
     onMount?: (player: MoroboxAIPlayerSDK.IPlayer) => void;
+    onUnmount?: (player: MoroboxAIPlayerSDK.IPlayer) => void;
 };
 
 type PlayerState = {};
