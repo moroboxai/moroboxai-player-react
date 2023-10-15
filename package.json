@@ -1,6 +1,6 @@
 {
     "name": "moroboxai-player-react",
-    "version": "0.1.0-alpha.20",
+    "version": "0.1.0-alpha.21",
     "description": "MoroboxAI player for React",
     "author": "moroboxai",
     "main": "./lib/cjs/index.cjs",
