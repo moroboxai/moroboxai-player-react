@@ -19,7 +19,6 @@ class PlayerContainer extends React.Component<
 
     componentDidMount(): void {
         if (this._player !== undefined) return;
-        console.log("mount player from", this);
 
         this._player = MoroboxAIPlayer.init({
             element: this.props._ref.current!,
@@ -144,7 +143,7 @@ class PlayerContainer extends React.Component<
 
         return (
             <div
-                className={"mai-player " + (this.props.className || "")}
+                className={this.props.className ?? ""}
                 ref={this.props._ref}
                 {..._props}
             />

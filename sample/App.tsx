@@ -1,7 +1,9 @@
 import React from "react";
 import { GAME_SDK_VERSION, IPlayer } from "moroboxai-player-web";
-import { Language } from "moroboxai-editor-sdk";
-import Editor, { VERSION as EDITOR_REACT_VERSION } from "moroboxai-editor-react";
+import type { OnRunOptions } from "moroboxai-editor-sdk";
+import Editor, {
+    VERSION as EDITOR_REACT_VERSION
+} from "moroboxai-editor-react";
 import Player from "../src";
 
 import "./App.css";
@@ -20,31 +22,31 @@ class App extends React.Component<AppProps, AppState> {
 
         this.state = {
             attachedPlayer: true,
-            attachedEditor: true,
+            attachedEditor: true
         };
 
         this.handleMount = this.handleMount.bind(this);
-        this.handleLoad = this.handleLoad.bind(this);
-        this.handleUnload = this.handleUnload.bind(this);
+        this.handleRun = this.handleRun.bind(this);
+        this.handleStop = this.handleStop.bind(this);
         this.handleAttachPlayer = this.handleAttachPlayer.bind(this);
         this.handleAttachEditor = this.handleAttachEditor.bind(this);
         this.handleReady = this.handleReady.bind(this);
     }
 
     handleMount(player: IPlayer) {
-        this.setState({player});
+        this.setState({ player });
     }
 
-    handleLoad(language: Language, code: string) {
+    handleRun(options: OnRunOptions) {
         if (this.state.player !== undefined) {
             this.state.player.getController(0)?.loadAgent({
-                language,
-                code
+                language: options.language,
+                code: options.script
             });
         }
     }
 
-    handleUnload() {
+    handleStop() {
         if (this.state.player !== undefined) {
             this.state.player.getController(0)?.unloadAgent();
         }
@@ -83,8 +85,8 @@ class App extends React.Component<AppProps, AppState> {
                 url="https://raw.githubusercontent.com/moroboxai/create-moroboxai-game/master/examples/canvas2d-rgb/agent.js"
                 width="500px"
                 height="400px"
-                onLoad={this.handleLoad}
-                onUnload={this.handleUnload}
+                onRun={this.handleRun}
+                onStop={this.handleStop}
             />
         ) : (
             <></>
